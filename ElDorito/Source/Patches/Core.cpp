@@ -102,6 +102,9 @@ namespace Patches::Core
 		// Used to call Patches::ApplyAfterTagsLoaded when tags have loaded
 		Hook(0x1030EA, TagsLoadedHook).Apply();
 
+		// Scoring Fix.
+		Patch(0x2E59A0, { 0xE8, 0xAB, 0x87, 0xEE, 0xFF, 0xC2, 0x14, 0x00 }).Apply();
+		
 		// Prevent FOV from being overridden when the game loads
 		Patch::NopFill(Pointer::Base(0x25FA79), 10);
 		Patch::NopFill(Pointer::Base(0x25FA86), 5);
